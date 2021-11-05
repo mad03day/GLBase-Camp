@@ -118,6 +118,40 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  set_PWM_prop();
+	  	switch(mode)
+	  	{
+	  	case 1:
+	  		TIM4->CCR1 = duty_value;
+	  		TIM4->CCR2 = 0;
+	  		TIM4->CCR3 = 0;
+	  		TIM4->CCR4 = 0;
+	  		break;
+	  	case 2:
+	  		TIM4->CCR1 = 0;
+	  		TIM4->CCR2 = duty_value;
+	  		TIM4->CCR3 = 0;
+	  		TIM4->CCR4 = 0;
+	  		break;
+	  	case 3:
+	  		TIM4->CCR1 = 0;
+	  		TIM4->CCR2 = 0;
+	  		TIM4->CCR3 = duty_value;
+	  		TIM4->CCR4 = 0;
+	  		break;
+	  	case 4:
+	  		TIM4->CCR1 = 0;
+	  		TIM4->CCR2 = 0;
+	  		TIM4->CCR3 = 0;
+	  		TIM4->CCR4 = duty_value;
+	  		break;
+	  	default:
+	  		TIM4->CCR1 = 0;
+	  		TIM4->CCR2 = 0;
+	  		TIM4->CCR3 = 0;
+	  		TIM4->CCR4 = 0;
+	  		break;
+	  	}
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -272,54 +306,36 @@ void HAL_GPIO_EXTI_Callback(uint16_t Pin)
 	switch (Pin)
 	{
 	case DUTY_UP_Pin:
-		duty = duty < MAX_DUTY? duty += STEP_DUTY : MAX_DUTY;
+		if (duty < MAX_DUTY)
+			duty += STEP_DUTY;
+		else
+			duty = MAX_DUTY;
 		break;
 	case DUTY_DOWN_Pin:
-		duty = duty > MIN_DUTY? duty -= STEP_DUTY : MIN_DUTY;
+		if (duty > MIN_DUTY)
+			duty -= STEP_DUTY;
+		else
+			duty = MIN_DUTY;
 		break;
 	case FREQ_UP_Pin:
-		frequncy = frequncy < MAX_FREQ ? frequncy += STEP_FREQ : MAX_FREQ;
+		if (frequncy < MAX_FREQ)
+			frequncy += STEP_FREQ;
+		else
+			frequncy = MAX_FREQ;
 		break;
 	case FREQ_DOWN_Pin:
-		frequncy = frequncy > STEP_FREQ ? frequncy -= STEP_FREQ : STEP_FREQ;
+		if (frequncy > STEP_FREQ)
+			frequncy -= STEP_FREQ;
+		else
+			frequncy = STEP_FREQ;
 		break;
 	case NEXT_PIN_Pin:
-		mode = mode < 4 ? ++mode : 0;
+		if (mode < 4)
+			mode++;
+		else
+			mode = 0;
 	}
-	set_PWM_prop();
-	switch(mode)
-	{
-	case 1:
-		TIM4->CCR1 = duty_value;
-		TIM4->CCR2 = 0;
-		TIM4->CCR3 = 0;
-		TIM4->CCR4 = 0;
-		break;
-	case 2:
-		TIM4->CCR1 = 0;
-		TIM4->CCR2 = duty_value;
-		TIM4->CCR3 = 0;
-		TIM4->CCR4 = 0;
-		break;
-	case 3:
-		TIM4->CCR1 = 0;
-		TIM4->CCR2 = 0;
-		TIM4->CCR3 = duty_value;
-		TIM4->CCR4 = 0;
-		break;
-	case 4:
-		TIM4->CCR1 = 0;
-		TIM4->CCR2 = 0;
-		TIM4->CCR3 = 0;
-		TIM4->CCR4 = duty_value;
-		break;
-	default:
-		TIM4->CCR1 = 0;
-		TIM4->CCR2 = 0;
-		TIM4->CCR3 = 0;
-		TIM4->CCR4 = 0;
-		break;
-	}
+
 }
 
 /* USER CODE END 4 */
@@ -335,6 +351,7 @@ void Error_Handler(void)
   __disable_irq();
   while (1)
   {
+
   }
   /* USER CODE END Error_Handler_Debug */
 }

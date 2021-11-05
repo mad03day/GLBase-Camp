@@ -62,19 +62,14 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define FREQ_UP_Pin GPIO_PIN_6
 #define FREQ_UP_GPIO_Port GPIOC
-#define FREQ_UP_EXTI_IRQn EXTI9_5_IRQn
 #define FREQ_DOWN_Pin GPIO_PIN_8
 #define FREQ_DOWN_GPIO_Port GPIOC
-#define FREQ_DOWN_EXTI_IRQn EXTI9_5_IRQn
 #define DUTY_DOWN_Pin GPIO_PIN_9
 #define DUTY_DOWN_GPIO_Port GPIOC
-#define DUTY_DOWN_EXTI_IRQn EXTI9_5_IRQn
 #define NEXT_PIN_Pin GPIO_PIN_15
 #define NEXT_PIN_GPIO_Port GPIOA
-#define NEXT_PIN_EXTI_IRQn EXTI15_10_IRQn
 #define DUTY_UP_Pin GPIO_PIN_11
 #define DUTY_UP_GPIO_Port GPIOC
-#define DUTY_UP_EXTI_IRQn EXTI15_10_IRQn
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
