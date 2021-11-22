@@ -1,0 +1,6 @@
+PWM_I2C.c:10:6:set_PWM_freq	48	static
+PWM_I2C.c:21:6:set_PWM_duty	48	static
+PWM_I2C.c:40:6:send_I2C_data	32	static
+PWM_I2C.c:48:6:sleep_mode_on	8	static
+PWM_I2C.c:54:6:sleep_mode_off	8	static
+PWM_I2C.c:60:6:state_all_PWM_channels	16	static
