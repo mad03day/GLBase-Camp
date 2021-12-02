@@ -1,0 +1,3 @@
+SST25VF016B.c:9:6:sst25vf016b_write	40	static
+SST25VF016B.c:29:9:sst25vf016b_read	24	static
+SST25VF016B.c:44:6:sst25vf016b_erase	24	static
